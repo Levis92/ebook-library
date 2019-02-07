@@ -1,0 +1,26 @@
+version: '3'
+services:
+  backend:
+    build:
+     context: ./backend
+     dockerfile: Dockerfile
+    image: ebook-library_backend
+    ports:
+     - "8000:8000"
+    volumes:
+     - ./backend:/app
+  frontend:
+    build:
+     context: ./frontend
+     dockerfile: Dockerfile
+    image: ebook-library_frontend
+    ports:
+     - "8080:8080"
+    volumes:
+     - ./frontend:/app
+    environment:
+     - NODE_ENV=development
+    depends_on:
+     - backend
+  redis:
+    image: "redis:alpine"
