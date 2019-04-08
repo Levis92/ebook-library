@@ -2,9 +2,11 @@
 
 #[macro_use] extern crate rocket;
 
+//mod dropbox;
+
 #[get("/")]
 fn index() -> &'static str {
-    "Hello, world!"
+    "Hello, world"
 }
 
 fn main() {
